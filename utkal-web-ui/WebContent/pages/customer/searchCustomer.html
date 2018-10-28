@@ -1,0 +1,162 @@
+
+<style>
+
+
+.label-align{
+
+text-align: right;
+}
+.item-align{
+padding-left:0px;
+ }
+
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 30%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+</style>
+<div style="text-align: center"><h4>Search Customer</h4></div>
+<hr>
+<div class="row">
+<div class="col-sm-3">
+ 
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
+<div class="control">
+<input type="text" id="customerNameSearch" class="form-control form-control-sm" 
+  name="myCountry" placeholder="Select Customer">
+ 
+</div>
+ <input type="hidden" id="customerIdHidden" value=0>
+<button class=" btn btn-primary btn-sm" onclick="getCustomerById()" style="margin-top: 8px">Get Details</button>
+<button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
+</div>
+<hr>
+
+
+
+</div>
+
+
+
+
+<div class="col-sm-9" style="padding-left:0px; ">
+<div>
+<div class="col-sm-12" id="successDiv" style="padding-left:0px; display: none"></div>
+<div class="form-horizontal"  id="customerSearchResultDiv" style="display: none" >
+   
+<div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="customerName">Customer Name:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="text" class="form-control" id="customerName" placeholder="Enter Customer Name" name="customerName">
+      </div>
+      <label class="col-sm-2 label-align" for="mobileNumber">Mobile Number:</label>
+      <div class="col-sm-3 item-align" >
+      <input type="number" class="form-control " id="mobileNumber" placeholder="Enter Mobile" name="mobileNumber">
+      </div>
+</div>
+<div class="form-group row">
+<label class="col-sm-3 label-align" for="address">Address:</label>
+      <div class="col-sm-8 item-align" >
+      <input type="text" class="form-control" id="address" placeholder="Enter Address" name="address">
+      </div>
+</div>
+
+<div class="form-group row">
+<label class="col-sm-3 label-align" for="customerType">Customer Type:</label>
+<div class="col-sm-3 item-align" >
+<select class="form-control" id="customerType" name="customerType">
+        <option value="">--Select--</option>
+		<option value="Regular">Regular</option>
+        <option value="Catering">Catering</option>
+         <option value="Adhoc">Adhoc</option>
+      </select>
+</div>
+      
+<label class="col-sm-2 label-align" for="securityDeposit">Security Deposit:</label>
+<div class="col-sm-3 item-align" >
+<input type="text" class="form-control" id="securityDeposit"  name="securityDeposit">
+</div>
+</div>
+
+
+
+<div class="form-group row">
+<label class="col-sm-3 label-align" for="normalJarRate">Normal Jar Rate:</label>
+<div class="col-sm-3 item-align" >
+<input type="text" class="form-control" id="normalJarRate"  name="normalJarRate">
+</div>
+      
+<label class="col-sm-2 label-align" for="coldJarRate">Cold Jar Rate:</label>
+<div class="col-sm-3 item-align" >
+<input type="text" class="form-control" id="coldJarRate"  name="coldJarRate">
+</div>
+</div>
+
+
+<div class="form-group row">
+<label class="col-sm-3 label-align" for="startDate">Start Date:</label>
+<div class="col-sm-3 item-align" >
+<input type="date" class="form-control" id="startDate"  name="startDate">
+</div>
+     
+</div>
+ <div class="form-group">        
+      <div class="col-sm-12" style="text-align: center">
+      <button  onclick="enableCustomerEdit()" id="editCustomerBtn" class="btn btn-primary">Edit</button>
+        <button  onclick="validateCustomerForm()" id="createCustomerBtn" class="btn btn-primary">Submit</button>
+		 <button onclick="resetField()" class="btn btn-default">Cancel</button>
+      </div>
+    </div> 
+</div>
+
+</div>
+
+</div>
+</div>

@@ -1,0 +1,47 @@
+<div style="text-align: center"><h4>Jar Defaulters</h4></div>
+<hr>
+
+<div class="row">
+<div class="col-sm-3">
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
+<div class="control">
+<input type="text" id="customerNameSearch" class="form-control form-control-sm" 
+  name="myCountry" placeholder="Select Customer">
+  <input type="hidden" id="customerIdHidden" value=0 >
+</div>
+<label class="control-label input-label" style="font-size: 16px"><strong>Start Date:</strong></label>
+<div class="control">
+<input type="date" id="orderDate" class="form-control form-control-sm" 
+  name="orderDate" >
+</div>
+
+<label class="control-label input-label" style="font-size: 16px"><strong>End Date:</strong></label>
+<div class="control">
+<input type="date" id="orderDate" class="form-control form-control-sm" 
+  name="orderDate" >
+</div>
+<label class="control-label input-label" style="font-size: 16px"><strong>Customer Type:</strong></label>
+<div class="control">
+<div >
+<select class="form-control form-control-sm" id="customerType" name="customerType">
+        <option value="">--Select--</option>
+		<option value="Regular">Regular</option>
+        <option value="Catering">Catering</option>
+        <option value="Adhoc">Adhoc</option>
+      </select>
+</div>
+</div>
+
+
+
+<button class=" btn btn-primary btn-sm" onclick="getCustomerOrderDetails()" style="margin-top: 8px">Get Details</button>
+<button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
+</div>
+<hr>
+
+
+
+</div>
+</div>
+

@@ -1,0 +1,61 @@
+<div style="text-align: center"><h4>Manage Payment</h4></div>
+<hr>
+<div class="col-sm-12" id="successDiv" style="padding-left:0px; display: none"></div>
+
+<div class="row" id="paymentModule">
+<div class="col-sm-3">
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
+<div class="control">
+<input type="text" id="customerNameSearch" class="form-control form-control-sm" 
+  name="myCountry" placeholder="Select Customer">
+  <span id="customerIdHidden" style="display: none" ></span>
+</div>
+ 
+
+<button class=" btn btn-primary btn-sm" onclick="getPaymentDetails()" style="margin-top: 8px">Get Payment Details</button>
+<button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
+</div>
+<hr>
+<div style="background: #aaaa;display: none" id="customerPaymentDiv">
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Total Bill:</label>
+<span class="control" id="totalBillSpan" style="font-size: 14px"></span>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Total payment Received:</label>
+<div><span class="control" id="totalPaymentRecvdDiv" style="font-size: 14px"></span></div>
+</div>
+</div>
+</div>
+
+
+<div class="col-sm-9" id="paymentDetailsDiv" style="padding-left:0px; display: none">
+
+
+<div class="form-horizontal" >
+
+
+<strong>Payment:</strong>
+<hr>
+<div class="form-group row">
+      <label class="col-sm-3"  for="paymentDate">Select Payment Date:</label>
+      <div class="col-sm-3"  >
+      <input type="date" class="form-control" id="paymentDate" >
+      </div>
+      <label class="col-sm-2" for="payment">Payment Amount:</label>
+      <div class="col-sm-3" >
+       <input type="number" value=0 class="form-control" id="payment" >
+      </div>
+</div>
+<hr>
+<div class="form-group">        
+      <div class="col-sm-12" style="text-align: center">
+        <button  onclick="createPayment()"  class="btn btn-primary">Payment</button>
+		 <button onclick="resetField()" class="btn btn-default">Cancel</button>
+      </div>
+    </div> 
+</div>
+
+</div>
+</div>

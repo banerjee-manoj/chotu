@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script>
+function popup(){
+	
+	newwindow=window.open('./pages/homePage.html',"_self",'directories=no,titlebar=no,toolbar=no,location=0,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350');
+
+    if (window.focus) {newwindow.focus()}
+
+    return false;
+}
+
+</script>
+</head>
+<body onload="popup()">
+Sample index.html
+</body>
+</html>

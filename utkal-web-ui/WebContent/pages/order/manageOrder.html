@@ -1,0 +1,151 @@
+<style>
+button {
+  display: inline-block;
+}
+</style>
+
+<div style="text-align: center"><h4>Manage Order</h4></div>
+<hr>
+<div class="row">
+<div class="col-sm-3">
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
+<div class="control">
+<input type="text" id="customerNameSearch" class="form-control form-control-sm" 
+  name="myCountry" placeholder="Select Customer">
+  <input type="hidden" id="customerIdHidden" value=0 >
+</div>
+<label class="control-label input-label" style="font-size: 16px"><strong>Select Order Date:</strong></label>
+<div class="control">
+<input type="date" id="orderDate" class="form-control form-control-sm" 
+  name="orderDate" >
+</div>
+
+<button class=" btn btn-primary btn-sm" onclick="getCustomerOrderDetails()" style="margin-top: 8px">Get Details</button>
+<button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
+</div>
+<hr>
+
+
+
+
+
+<div style="background: #aaaa;display: none" id="customerDataDiv">
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Mobile Number:</label>
+<span class="control" id="mobSpan" style="font-size: 14px"></span>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Address:</label>
+<div><span class="control" id="addressSpan" style="font-size: 14px"></span></div>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Normal Jar Rate:</label>
+<span class="control" id="normalJarRateSpan" style="font-size: 14px"></span>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Cold Jar Rate:</label>
+<span class="control" id="coldJarRateSpan" style="font-size: 14px"></span>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Container:</label>
+<span class="control">6</span>
+</div>
+<div class="control-group">
+<label class="control-label input-label" style="font-size: 14px" >Payment due:</label>
+<span class="control">6</span>
+</div>
+</div>
+
+
+</div>
+
+
+
+<div class="col-sm-9" id="successDiv" style="padding-left:0px; display: none"></div>
+<div class="col-sm-9" id="orderDiv" style="padding-left:0px; display: none">
+ <div class="form-horizontal" >
+ <input type="hidden" id="orderId" value="0">
+ <strong>New Order:</strong>
+ <hr>
+ <div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="customerName">Normal Jar:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" onkeyup="calculate()" value=0 class="form-control" id="normalJarOrder" >
+      </div>
+      <label class="col-sm-2 label-align" for="mobileNumber">Cold jar:</label>
+      <div class="col-sm-3 item-align" >
+      <input type="number" onkeyup="calculate()" value=0 class="form-control" id="coldJarOrder" >
+      </div>
+</div>
+<div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="containerOrder">Container:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" value=0 class="form-control" id="containerOrder" >
+      </div>
+      <label class="col-sm-2 label-align" for=""></label>
+      <div class="col-sm-3 item-align" >
+      
+      </div>
+</div>
+ <strong>Return:</strong>
+ <hr>
+ <div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="customerName">Normal Jar:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" onkeyup="calculate()" value=0 class="form-control" id="normalJarReturned" >
+      </div>
+      <label class="col-sm-2 label-align" for="coldJarReturned">Cold jar:</label>
+      <div class="col-sm-3 item-align" >
+      <input type="number"  value=0 class="form-control" id="coldJarReturned" >
+      </div>
+</div>
+<div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="normalJarFilledReturned">Normal Filled Jar:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" onkeyup="calculate()" value=0 class="form-control" id="normalJarFilledReturned" >
+      </div>
+      <label class="col-sm-2 label-align" for="coldJarFilledReturned">Cold Filled jar:</label>
+      <div class="col-sm-3 item-align" >
+      <input type="number" onkeyup="calculate()" value=0 class="form-control" id="coldJarFilledReturned" >
+      </div>
+</div>
+<div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="containerReturned">Container:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" value=0 class="form-control" id="containerReturned" >
+      </div>
+      <label class="col-sm-2 label-align" for=""></label>
+      <div class="col-sm-3 item-align" >
+      
+      </div>
+</div>
+<strong>Payment:</strong>
+<hr>
+<div class="form-group row">
+      <label class="col-sm-3" style="text-align: right" for="totalBill">Total:</label>
+      <div class="col-sm-3 item-align"  >
+      <span class="form-control" id="totalBill" >0</span>
+      </div>
+    <label class="col-sm-3" style="text-align: right" for="payment">Payment:</label>
+      <div class="col-sm-3 item-align"  >
+      <input type="number" class="form-control" id="payment" value=0>
+      </div>
+    
+</div>
+ </div>
+<hr>
+<div class="form-group">        
+      <div class="col-sm-12" style="text-align:center; ">
+      <button  onclick="editOrder()" id="editBtn" class="btn btn-primary">Edit</button>
+        <button  onclick="createOrder()" id="createBtn"  class="btn btn-primary">Create</button>
+		 <button onclick="resetField()" class="btn btn-default">Cancel</button>
+      </div>
+    </div> 
+
+</div>
+
+
+
+</div>
+  
