@@ -14,12 +14,24 @@ public class OrderMapper implements RowMapper<CustomerOrder> {
 		CustomerOrder order = new CustomerOrder();
 		order.setOrderId(rs.getInt("order_id"));
 		order.setOrderDate(rs.getString("transaction_date"));
+		
 		order.setNormalJarOrdered(rs.getString("n_jar_taken"));
-		order.setColdJarOrdered(rs.getString("c_jar_taken"));
-		order.setColdJarOrdered(rs.getString("c_jar_taken"));
-		order.setTotalBill(rs.getString("total_bill"));
 		order.setNormalFilledJarReturned(rs.getString("n_filled_jar_return"));
-	
+		order.setNormalEmptyJarReturned(rs.getString("n_empty_jar_return"));
+		
+		order.setColdJarOrdered(rs.getString("c_jar_taken"));
+		order.setColdEmptyJarReturned(rs.getString("c_empty_jar_return"));
+		order.setColdFilledJarReturned(rs.getString("n_filled_jar_return"));
+		
+		order.setContainerOrdered(rs.getString("container_taken"));
+		order.setContainerReturned(rs.getString("container_return"));
+		
+		order.setTotalBill(rs.getString("total_bill"));
+		
+	    order.setPayment(rs.getString("payment_recvd"));
+	    order.setPaymentId(rs.getInt("payment_id"));
+	    
+	    
 		return order;
 	}
 

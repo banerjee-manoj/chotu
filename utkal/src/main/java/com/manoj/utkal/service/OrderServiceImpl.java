@@ -50,7 +50,8 @@ public class OrderServiceImpl implements OrderService{
 		orderDao.createPayment(customerOrder);
 		}else {
 			customerOrder.setPaymentDate(customerOrder.getOrderDate());
-			orderDao.updateOrder(order)(customerOrder);
+			orderDao.updatePayment(customerOrder);
+			
 		}
 		return customerOrder;
 	}

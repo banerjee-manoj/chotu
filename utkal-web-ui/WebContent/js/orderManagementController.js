@@ -45,12 +45,13 @@ function editOrder(){
 	$("#editBtn").css("display","none");
 	$("#normalJarOrder").removeAttr('disabled','false');
 	$("#coldJarOrder").removeAttr('disabled','false');
-	$("#containerOrder").removeAttr('disabled','false');
+	$("#containerOrdered").removeAttr('disabled','false');
 	$("#normalJarReturned").removeAttr('disabled','false');
 	$("#coldJarReturned").removeAttr('disabled','false');
 	$("#normalJarFilledReturned").removeAttr('disabled','false');
 	$("#coldJarFilledReturned").removeAttr('disabled','false');
 	$("#containerReturned").removeAttr('disabled','false');
+	$("#payment").removeAttr('disabled','false');
 	
 }
 
@@ -66,8 +67,8 @@ function populatePreloadedData(resp){
 	$("#normalJarOrder").attr('disabled','true');
 	$("#coldJarOrder").val(resp.coldJarOrdered);
 	$("#coldJarOrder").attr('disabled','true');
-	$("#containerOrder").val(resp.containerOrderd);
-	$("#containerOrder").attr('disabled','true');
+	$("#containerOrdered").val(resp.containerOrdered);
+	$("#containerOrdered").attr('disabled','true');
 	$("#normalJarReturned").val(resp.normalEmptyJarReturned);
 	$("#normalJarReturned").attr('disabled','true');
 	$("#coldJarReturned").val(resp.coldEmptyJarReturned);
@@ -79,6 +80,9 @@ function populatePreloadedData(resp){
 	$("#containerReturned").val(resp.containerReturned);
 	$("#containerReturned").attr('disabled','true');
 	$("#totalBill").text(resp.totalBill);
+	$("#payment").val(resp.payment);
+	$("#payment").attr('disabled','true');
+	$("#paymentId").val(resp.paymentId);
 	
 	$("#createBtn").css("display","none");
 	$("#editBtn").css("display","inline-block");
@@ -103,12 +107,12 @@ function calculate(){
 }
 
 function createOrder(){
-	
+	$(".overlay").show();
 	var customerId=$("#customerIdHidden").val();
 	var orderId=$("#orderId").val();
 	//{"customerId":0,"customerName":"Manoj Banerjee","customerMobileNumber":"983011","address":"sampleAddress","customerType":"Regular","securityDeposit":"500","normalJarRate":"30","coldJarRate":"30","startDate":"2018/09/08","active":null,"noOfContainer":"5"}
-	var jsonData='{"orderId":'+orderId+',"customerId":'+customerId+',"orderDate":"'+$("#orderDate").val()+'","normalJarOrdered":"'+$("#normalJarOrder").val()+'","coldJarOrdered":"'+$("#coldJarOrder").val()+'","containerOrdered":"0",'+
-	'"normalEmptyJarReturned":"'+$("#normalJarReturned").val()+'","coldEmptyJarReturned":"'+$("#coldJarReturned").val()+'","normalFilledJarReturned":"'+$("#normalJarFilledReturned").val()+'","coldFilledJarReturned":"'+$("#coldJarFilledReturned").val()+'","totalBill":"'+$("#totalBill").text()+'"}'
+	var jsonData='{"orderId":'+orderId+',"customerId":'+customerId+',"paymentId":'+$("#paymentId").val()+',"orderDate":"'+$("#orderDate").val()+'","normalJarOrdered":"'+$("#normalJarOrder").val()+'","coldJarOrdered":"'+$("#coldJarOrder").val()+'","containerOrdered":"'+$("#containerOrdered").val()+'",'+
+	'"normalEmptyJarReturned":"'+$("#normalJarReturned").val()+'","coldEmptyJarReturned":"'+$("#coldJarReturned").val()+'","normalFilledJarReturned":"'+$("#normalJarFilledReturned").val()+'","coldFilledJarReturned":"'+$("#coldJarFilledReturned").val()+'","containerReturned":"'+$("#containerReturned").val()+'","totalBill":"'+$("#totalBill").text()+'","payment":"'+$("#payment").val()+'"}'
 	
 	
 	console.log(jsonData);
@@ -132,13 +136,16 @@ function createOrder(){
 	     $("#successDiv").load("./pages/successPage.html");
 	     setTimeout(function(){
 	    	 $("#successMessage").text("Order Id : "+resp.orderId+" Created");
-		     $("#successDiv").css("display","block");	 
+		     $("#successDiv").css("display","block");
+		     $("#mainDiv").hide();
+		     $(".overlay").hide();
 	     },1000);
 	     
 	     
 	     
 	     },
-	     error: function(resp, status) {console.log("Error");}
+	     error: function(resp, status) {console.log("Error");
+	     $(".overlay").hide();}
 	    
 		
 	});

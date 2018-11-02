@@ -39,6 +39,8 @@ public class OrderDaoImpl implements OrderDao {
 			return new CustomerOrder();
 		}
 		
+		
+		
 		return customerOrderList.get(0);
 		
 		
@@ -64,6 +66,8 @@ public class OrderDaoImpl implements OrderDao {
 				ps.setString(7, customerOrder.getNormalFilledJarReturned());
 				ps.setString(8,customerOrder.getColdFilledJarReturned());
 				ps.setString(9,customerOrder.getTotalBill());
+				ps.setString(10,customerOrder.getContainerOrdered());
+				ps.setString(11,customerOrder.getContainerReturned());
 				
 				return ps;
 			}
@@ -83,13 +87,23 @@ public class OrderDaoImpl implements OrderDao {
 		String updateQuery=env.getProperty("updateOrder");
 		int i = jdbcTemplate.update(updateQuery, order.getOrderDate(),order.getNormalJarOrdered(),order.getColdJarOrdered(),
 				order.getNormalEmptyJarReturned(),order.getColdEmptyJarReturned(),order.getNormalFilledJarReturned(),
-				order.getColdFilledJarReturned(),order.getTotalBill(),order.getOrderId());
+				order.getColdFilledJarReturned(),order.getTotalBill(),order.getContainerOrdered(),order.getContainerReturned(),order.getOrderId());
 		log.info("updated customer id with status code "+i+" for customr id "+order.getCustomerId());
 		
 		return order;
 		
 	}
 	
+	@Override
+	public CustomerOrder updatePayment(CustomerOrder order) {
+		log.info("Begin update Payment for customer id and order id and payment id  "+order.getCustomerId()+" order id "+order.getOrderId() + "  payment id " +order.getPaymentId());
+		String updateQuery=env.getProperty("updatePayment");
+		int i = jdbcTemplate.update(updateQuery, order.getPayment(),order.getPaymentId());
+		log.info("updated payment Id status code "+i+" for customr id "+order.getCustomerId());
+		
+		return order;
+		
+	}
 	
 	
 	

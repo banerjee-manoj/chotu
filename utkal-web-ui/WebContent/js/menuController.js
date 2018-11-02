@@ -44,13 +44,32 @@ function loadOrderManagementpage(){
 }
 
 function loadManagePayment(){
-	getAllCustomerNames();
+	$(".overlay").show();
+	
 	$("#mainContainer").load("./pages/payment/payment.html");
+	setTimeout(() => {
+		getAllCustomerNames();	
+	}, 200);
+	
+	setTimeout(() => {
+		$(".overlay").hide();
+	}, 500);
 	
 }
 
 function loadJarDefaulterPage(){
-	$("#mainContainer").load("./pages/defaulters/jarDefaulters.html");
+$(".overlay").show();
+	
+$("#mainContainer").load("./pages/defaulters/jarDefaulters.html");
+	setTimeout(() => {
+		getAllCustomerNames();	
+	}, 200);
+	
+	setTimeout(() => {
+		$(".overlay").hide();
+	}, 500);
+	
+	
 }
 
 function loadOrderHistory(){

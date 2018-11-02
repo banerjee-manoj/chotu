@@ -12,14 +12,14 @@
 </div>
 <label class="control-label input-label" style="font-size: 16px"><strong>Start Date:</strong></label>
 <div class="control">
-<input type="date" id="orderDate" class="form-control form-control-sm" 
-  name="orderDate" >
+<input type="date" id="startDate" class="form-control form-control-sm" 
+  name="startDate" >
 </div>
 
 <label class="control-label input-label" style="font-size: 16px"><strong>End Date:</strong></label>
 <div class="control">
-<input type="date" id="orderDate" class="form-control form-control-sm" 
-  name="orderDate" >
+<input type="date" id="endDate" class="form-control form-control-sm" 
+  name="endDate" >
 </div>
 <label class="control-label input-label" style="font-size: 16px"><strong>Customer Type:</strong></label>
 <div class="control">
@@ -35,7 +35,7 @@
 
 
 
-<button class=" btn btn-primary btn-sm" onclick="getCustomerOrderDetails()" style="margin-top: 8px">Get Details</button>
+<button class=" btn btn-primary btn-sm" onclick="getJarDefaulters()" style="margin-top: 8px">Get Details</button>
 <button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
 </div>
 <hr>
@@ -43,5 +43,27 @@
 
 
 </div>
+
+
+
+<div class="col-sm-9">
+
+<div id="searchResult">
+<table>
+<tr>
+<th>Customer Name</th>
+<th>Normal Jar Pending</th>
+<th>Cold Jar Pending</th>
+<th>Container</th>
+</tr>
+</table>
+</div>
+
+
+
+</div>
+
+
+
 </div>
 

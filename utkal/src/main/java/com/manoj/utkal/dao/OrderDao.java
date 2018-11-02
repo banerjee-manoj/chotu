@@ -11,4 +11,5 @@ public interface OrderDao {
     public CustomerOrder getTotalBillByCustId(String custId);
     
     public CustomerOrder updateOrder(CustomerOrder order);
+    public CustomerOrder updatePayment(CustomerOrder order);
 }

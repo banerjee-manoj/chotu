@@ -15,7 +15,7 @@ public class CustomerOrder extends Customer{
 	private String normalFilledJarReturned;
 	private String coldFilledJarReturned;
 	private String payment;
-	private String containerOrderd;
+	
 	private String containerReturned;
 	private String normalJarPending;
 	private String coldJarPending;

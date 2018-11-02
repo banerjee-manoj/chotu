@@ -103,7 +103,12 @@ $.ajax({
     
      customers=resp;
      autocomplete(document.getElementById("customerNameSearch"),customers);},
-     error: function(resp, status) {console.log("Error");}
+     error: function(resp, status) {
+    	 $("#errorMessage").text("Something went wrong");
+    	 $("#searchCustomerDiv").hide();	 
+    	 console.log("Error");
+    	 
+     }
     
 	
 });
