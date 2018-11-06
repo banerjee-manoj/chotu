@@ -1,6 +1,6 @@
 function getJarDefaulters() {
 
-	alert("Jar Defaulters..");
+
 	
 	customerId = $("#customerIdHidden").val();
 	startDate = $("#startDate").val();
@@ -8,16 +8,16 @@ function getJarDefaulters() {
 	customerType = $("#customerType").val();
 
 	if (customerId == "" || customerId == 0) {
-		alert("Please select a Customer");
+//		alert("Please select a Customer");
 	}
 	if (startDate == "") {
-		alert("Please select a Start Date");
+	//	alert("Please select a Start Date");
 	}
 	if (endDate == "") {
-		alert("Please select an End Date");
+		//alert("Please select an End Date");
 	}
 	if (customerType == "") {
-		alert("Please select a Customer Type");
+		//alert("Please select a Customer Type");
 	}
 
 	jsonData = '{"customerId":"' + customerId + '","startDate":"' + startDate
@@ -25,8 +25,10 @@ function getJarDefaulters() {
 			+ '"}';
 
 	console.log(jsonData);
-
-	$(".overlay").show();
+	//$("#defaulterSearchResult tbody tr").remove();
+	$("#defaulterSearchResult").DataTable().destroy();
+	//table.destroy();
+	//$(".overlay").show();
 	$.ajax({
 		
 		 type: 'POST',
@@ -38,18 +40,43 @@ function getJarDefaulters() {
 	     complete: function() {
 	    },
 	     success: function(resp, status) {
-	    	 $("#successDiv").load("./pages/successPage.html");
-		     setTimeout(function(){
-		    	 $("#successMessage").text("Customer Id : "+resp.customerId+" Created");
-			     $("#successDiv").css("display","block");			     
-			     $("#customerFormDiv").css("display","none");
-			     $("#customerSearchResultDiv").css("display","none"); 
-			     $(".overlay").hide();
-		     },500);
+	    	// alert("success");
+	    	 console.log(resp);
+	    	$("#defaulterSearchResult tbody tr").remove();
+	    		$("#defaulterSearchResult").DataTable().destroy();
+	    	  var trHtml = ''; 
+		      $.each(resp,function(i,item){
+		    	  console.log(i);
+		    trHtml += "<tr><td>"+item.customerName+"</td>" +
+		    "<td>"+item.normalJarTaken+"</td>"+
+		    "<td>"+item.normalEmptyJarReturned+"</td>"+
+		    "<td>"+item.normalFilledJarReturned+"</td>"+
+		    "<td>"+item.coldJarTaken+"</td>"+
+		    "<td>"+item.coldEmptyJarReturned+"</td>"+
+		    "<td>"+item.coldFilledJarReturned+"</td>"+
+		    "<td>"+item.normalJarPending+"</td>"+
+		    "<td>"+item.coldJarPending+"</td>"+
+		    
+		    "</tr>";
+		    });
+		      $('#defaulterSearchResult').append(trHtml);
+		      $('#defaulterSearchResult').DataTable();
+		     // $(".overlay").hide();
+		      //alert("Done");
+		      
+	    		
 	    	 
 	   },
 	     error: function(resp, status) {
-	    	 $(".overlay").hide();
+	    	 $("#mainContainer").load("./pages/errorPage.html");
+	    		setTimeout(() => {
+	    			getAllCustomerNames();	
+	    		}, 200);
+	    		
+	    		setTimeout(() => {
+	    			$(".overlay").hide();
+	    		}, 500);
+	    	
 	    	 console.log("Error");}
 	    
 		
