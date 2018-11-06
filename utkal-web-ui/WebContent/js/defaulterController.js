@@ -25,10 +25,12 @@ function getJarDefaulters() {
 			+ '"}';
 
 	console.log(jsonData);
-	//$("#defaulterSearchResult tbody tr").remove();
+	
+	
+	
+	$(".overlay").show();
+	$("#defaulterSearchResult tbody tr").remove();
 	$("#defaulterSearchResult").DataTable().destroy();
-	//table.destroy();
-	//$(".overlay").show();
 	$.ajax({
 		
 		 type: 'POST',
@@ -46,7 +48,7 @@ function getJarDefaulters() {
 	    		$("#defaulterSearchResult").DataTable().destroy();
 	    	  var trHtml = ''; 
 		      $.each(resp,function(i,item){
-		    	  console.log(i);
+		    	
 		    trHtml += "<tr><td>"+item.customerName+"</td>" +
 		    "<td>"+item.normalJarTaken+"</td>"+
 		    "<td>"+item.normalEmptyJarReturned+"</td>"+
@@ -61,7 +63,7 @@ function getJarDefaulters() {
 		    });
 		      $('#defaulterSearchResult').append(trHtml);
 		      $('#defaulterSearchResult').DataTable();
-		     // $(".overlay").hide();
+		      $(".overlay").hide();
 		      //alert("Done");
 		      
 	    		
