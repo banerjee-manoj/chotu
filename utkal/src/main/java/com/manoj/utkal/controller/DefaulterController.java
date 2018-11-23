@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/defaulter")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(allowedHeaders="*")
 public class DefaulterController {
 	
 	@Autowired

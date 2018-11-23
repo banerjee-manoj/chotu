@@ -28,7 +28,7 @@ public class DefaulterDaoImpl implements DefaulterDao {
 		String baseQuery = "select customer.id as customerId, customer.customer_name,SUM(orderTable.n_jar_taken) as normalJarTaken, " + 
 				" SUM(orderTable.n_empty_jar_return) normalEmptyJarReturned,SUM(orderTable.n_filled_jar_return) as normalFilledJarReturned, " + 
 				" SUM(orderTable.c_jar_taken) as coldJarTaken ,SUM(orderTable.c_empty_jar_return) as coldEmptyJarReturned,SUM(orderTable.c_filled_jar_return) as coldFilledJarReturned " + 
-				" from utkal.order_table orderTable, customer customer  where 1=1 and customer.id=orderTable.customer_id";
+				" from order_table orderTable, customer customer  where 1=1 and customer.id=orderTable.customer_id";
 		StringBuilder strBuilder = new StringBuilder();
 		strBuilder.append(baseQuery);
 		if(!(criteria.getCustomerId()==0)) {

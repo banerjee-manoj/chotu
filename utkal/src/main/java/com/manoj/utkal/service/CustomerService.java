@@ -14,6 +14,8 @@ public interface CustomerService {
 	public Customer getCustomerById(String name) ;
 	
 	public List<Customer> getAllCustomer();
+	
+	public String loadCustomer();
 
 	
 	

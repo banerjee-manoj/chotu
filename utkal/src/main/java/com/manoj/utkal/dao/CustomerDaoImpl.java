@@ -14,8 +14,10 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import com.manoj.utkal.mapper.CustomerLoaderMapper;
 import com.manoj.utkal.mapper.CustomerMapper;
 import com.manoj.utkal.model.Customer;
+import com.manoj.utkal.model.CustomerLoader;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -114,6 +116,18 @@ public class CustomerDaoImpl implements CustomerDao{
 		jdbcTemplate.update(query,customer.getCustomerName(),customer.getCustomerMobileNumber(),customer.getStartDate(),customer.getCustomerType(),customer.getSecurityDeposit(),
 			customer.getNormalJarRate(),customer.getColdJarRate(),customer.getCustomerId());
 		return customer;
+	}
+
+	@Override
+	public List<Customer> loadCustomer() {
+		log.info("Loading customer");
+		String query="select * from customer_details";
+		List<Customer> customerLoaderList = jdbcTemplate.query(query, new CustomerLoaderMapper());
+		log.info("Size of the customer Table...{}",customerLoaderList.size());
+		
+	
+		
+		return customerLoaderList;
 	}
 
 }

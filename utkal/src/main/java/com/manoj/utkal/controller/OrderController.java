@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/order")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(allowedHeaders="*")
 public class OrderController {
 	
 	@Autowired

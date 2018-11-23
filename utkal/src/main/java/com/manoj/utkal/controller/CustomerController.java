@@ -24,11 +24,20 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/customer")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(allowedHeaders="*")
 public class CustomerController {
 	
 	@Autowired
 	CustomerService customerService;
+	
+	
+	@GetMapping("/loadCustomer")
+	public ResponseEntity<String> loadCustomer() {
+		
+		customerService.loadCustomer();
+		return new ResponseEntity<>("Success",HttpStatus.OK);
+	}
+	
 	
 	@GetMapping("/test")
 	public ResponseEntity<Customer> testMethod() {

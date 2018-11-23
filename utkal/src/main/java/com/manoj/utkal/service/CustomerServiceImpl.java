@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer=customerDao.getCustomerById(Id);
 		customer.setAddress(customerDao.getCustomerAddressById(Id));
 		try{SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		customer.setStartDate(sdf.format(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(customer.getStartDate())));
+		//customer.setStartDate(sdf.format(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(customer.getStartDate())));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -56,6 +56,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getAllCustomer() {
 		
 		return customerDao.getAllCustomer();
+	}
+
+	@Override
+	public String loadCustomer() {
+		List<Customer> customerList = customerDao.loadCustomer();
+		for(Customer customer : customerList){
+			log.info("loading customer : {}",customer.getCustomerName());
+			customerDao.saveCustomer(customer);
+			customerDao.saveAddress(customer);
+		}
+			
+		return "Success";
 	}
 
 }

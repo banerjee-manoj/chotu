@@ -13,4 +13,5 @@ public interface CustomerDao {
     public List<Customer> getAllCustomer();
     public String getCustomerAddressById(String id);
     public Customer updateCustomerDetails(Customer customer);
+    public List<Customer> loadCustomer();
 }
