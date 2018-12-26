@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.manoj.utkal.mapper.OrderMapper;
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.SearchCriteria;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -152,8 +155,26 @@ public class OrderDaoImpl implements OrderDao {
 	
 	
 	
-	
-	
+	@Override
+	public List<CustomerOrder> getOrderHistory(SearchCriteria criteria){
+		log.debug("Begin getOrderHistory");
+		List<CustomerOrder> customerOrderHistory = new ArrayList<CustomerOrder>();
+		StringBuffer query = new StringBuffer();
+		query.append(env.getProperty("getOrderHistory"));
+		if(!StringUtils.isEmpty(criteria.getCustomerId()) && criteria.getCustomerId()!=0){
+		query.append(" and ord.customer_id="+criteria.getCustomerId());
+		}
+		if(!StringUtils.isEmpty(criteria.getStartDate()) && !StringUtils.isEmpty(criteria.getEndDate())){
+			query.append(" and ord.transaction_date>='"+criteria.getStartDate()+"' "
+					+ "and ord.transaction_date<='"+criteria.getEndDate()+"'");
+		}
+		
+		log.debug("Query to search order history: {}",query.toString());
+		customerOrderHistory = jdbcTemplate.query(query.toString(),new OrderMapper());
+		
+		
+		return customerOrderHistory;
+	} 
 	
 
 }

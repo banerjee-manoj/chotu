@@ -65,7 +65,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
 	@Override
 	public Customer saveAddress(final Customer customer) {
-	     log.info("Save Customer Address");
+	     log.info("Save Customer Address for customer Id :{}",customer.getCustomerId());
 	 	String query = environment.getProperty("saveAddress");
 		jdbcTemplate.update(query, customer.getCustomerId(),customer.getAddress());
 		return customer;

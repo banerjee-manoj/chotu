@@ -1,5 +1,7 @@
 package com.manoj.utkal.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.SearchCriteria;
 import com.manoj.utkal.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -56,4 +59,13 @@ public class OrderController {
 		
 	}
 
+	@PostMapping("/orderHistory")
+	public ResponseEntity<List<CustomerOrder>> getorderHistory(@RequestBody SearchCriteria criteria){
+		log.debug("getOrderHistory");
+		return new ResponseEntity<List<CustomerOrder>>(orderService.getOrderHistory(criteria),HttpStatus.OK);
+	}
+	
+	
+	
+	
 }

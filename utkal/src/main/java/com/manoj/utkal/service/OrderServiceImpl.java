@@ -1,11 +1,14 @@
 package com.manoj.utkal.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.manoj.utkal.dao.OrderDao;
 import com.manoj.utkal.model.Customer;
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.SearchCriteria;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -67,6 +70,12 @@ public class OrderServiceImpl implements OrderService{
 	public CustomerOrder createPayment(CustomerOrder customerOrder) {
 	
 		return orderDao.createPayment(customerOrder);
+	}
+
+	@Override
+	public List<CustomerOrder> getOrderHistory(SearchCriteria criteria) {
+		
+		return orderDao.getOrderHistory(criteria);
 	}
 
 }

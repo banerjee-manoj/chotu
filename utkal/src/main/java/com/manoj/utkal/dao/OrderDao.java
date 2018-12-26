@@ -1,6 +1,9 @@
 package com.manoj.utkal.dao;
 
+import java.util.List;
+
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.SearchCriteria;
 
 public interface OrderDao {
 	
@@ -12,4 +15,6 @@ public interface OrderDao {
     
     public CustomerOrder updateOrder(CustomerOrder order);
     public CustomerOrder updatePayment(CustomerOrder order);
+    
+    public List<CustomerOrder> getOrderHistory(SearchCriteria criteria);
 }
