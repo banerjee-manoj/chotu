@@ -1,12 +1,15 @@
 
 function loadCreateCustomerPage(){
 	
-	
+	 $("#errorMessage").text("");
+	 $('#mainContainer').show();
 	$("#mainContainer").load("./pages/customer/addCustomer.html");
 }
 
 
 function loadSearchCustomerPage(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 	$(".overlay").show();
 	$("#mainContainer").load("./pages/customer/searchCustomer.html");
 	setTimeout(() => {
@@ -19,6 +22,8 @@ function loadSearchCustomerPage(){
 
 
 function loadAllCustomerPage(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 	$(".overlay").show();
 	$("#mainContainer").load("./pages/customer/showAllCustomer.html");
 	setTimeout(() => {
@@ -32,6 +37,8 @@ function loadAllCustomerPage(){
 
 
 function loadOrderManagementpage(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 	$(".overlay").show();
 	$("#mainContainer").load("./pages/order/manageOrder.html");
 	setTimeout(() => {
@@ -44,6 +51,8 @@ function loadOrderManagementpage(){
 }
 
 function loadManagePayment(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 	$(".overlay").show();
 	
 	$("#mainContainer").load("./pages/payment/payment.html");
@@ -58,6 +67,8 @@ function loadManagePayment(){
 }
 
 function loadJarDefaulterPage(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 $(".overlay").show();
 	
 $("#mainContainer").load("./pages/defaulters/jarDefaulters.html");
@@ -73,6 +84,8 @@ $("#mainContainer").load("./pages/defaulters/jarDefaulters.html");
 }
 
 function loadOrderHistory(){
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
 	getAllCustomerNames();
 	$("#mainContainer").load("./pages/order/orderHistory.html");
 }

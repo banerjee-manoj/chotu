@@ -23,7 +23,11 @@ function saveCustomer(jsonData){
 		     },500);
 	    	 
 	   },
-	     error: function(resp, status) {console.log("Error");}
+	     error: function(resp, status) {
+	    	 $(".overlay").hide();
+	    	 $("#errorMessage").text("Something went wrong");
+	    	 
+	     }
 	    
 		
 	});
@@ -106,7 +110,7 @@ $.ajax({
      error: function(resp, status) {
     	 $("#errorMessage").text("Something went wrong");
     	 $("#searchCustomerDiv").hide();	 
-    	 console.log("Error");
+    	 $('#mainContainer').hide();
     	 
      }
     

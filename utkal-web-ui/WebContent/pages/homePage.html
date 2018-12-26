@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Utkal Aqua Industries</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 <script src="js/global.js"></script>
 <script src="js/menuController.js"></script>
 <script src="js/customerController.js"></script>
@@ -22,120 +20,85 @@
 <script src="js/orderManagementController.js"></script>
 <script src="js/paymentController.js"></script>
 <script src="js/defaulterController.js"></script>
-
- 
-  
-  <script src="https://cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-<script>
-webshims.setOptions('forms-ext', {types: 'date'});
-webshims.polyfill('forms forms-ext');
-</script>
+<link rel="stylesheet" href="css/app.css">
 
 
+<div class="overlay"><div id="loading-img"></div></div>
 
-  
+<div class="jumbotron text-center"
+		style="margin-bottom: 0; padding: 1rem 1rem">
+		<h4>Utkal Aqua Industries</h4>
+
+	</div>
+
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+
+				<!-- Add new Customer Page -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Customer
+						Management</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#"
+							onClick="loadCreateCustomerPage()">Add New Customer</a> <a
+							class="dropdown-item" href="#" onclick="loadSearchCustomerPage()">Search
+							Customer</a> <a class="dropdown-item" href="#"
+							onclick="loadAllCustomerPage()">Show All Customer</a>
+					</div></li>
+				<!-- Add new Customer Ends.. -->
+
+				<!-- Order Management Links -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Order
+						Management</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#"
+							onClick="loadOrderManagementpage()">Manage Order</a> <a
+							class="dropdown-item" href="#" onClick="loadOrderHistory()">Order
+							History</a>
+						<!-- <a class="dropdown-item" href="#" onClick="loadManagePayment()">Manage Payment</a> -->
+					</div></li>
+				<!-- Order Management Links -->
+
+				<!-- Payment Management Links -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Payment
+						Management</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#" onClick="loadManagePayment()">Manage
+							Payment</a> <a class="dropdown-item" href="#"
+							onClick="loadPaymentHistory()">Payment History</a>
+
+					</div></li>
+				<!-- Payment Links -->
 
 
+				<!-- Defaulter Management Links -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Defaulters</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#" onClick="loadJarDefaulterPage()">Jar
+							Defaulters</a> <a class="dropdown-item" href="#" onClick="()">Payment
+							Defaulters</a>
+					</div></li>
+				<!-- Defaulters Links -->
 
-  <style type="text/css">
-  #loading-img {
-    background: url(http://preloaders.net/preloaders/360/Velocity.gif) center center no-repeat;
-    height: 100%;
-    z-index: 20;
-}
-.overlay {
-    background: #e9e9e9;
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    z-index: 20;
-}
-  
-  
-  
-  
-  .mainContainerClass{
-  margin-left: 10px;
-  margin-right: 10px}
-  
-  </style>
-  </head>
-<body>
-<div class="overlay">
 
-    <div id="loading-img"></div>
+			</ul>
+		</div>
+	</nav>
+	
+<div class="parent-body">	
+<div style="color: red;text-align: center;" ><b><span id="errorMessage"></span></b></div>	
+		<div class="mainContainerClass" style="margin-top: 15px">
 
-</div>
-<div class="jumbotron text-center" style="margin-bottom:0;padding: 1rem 1rem">
-  <h4>Chotu Ka Pani- ek bar nehi bar bar piyo</h4>
-   
-</div>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-    
-   <!-- Add new Customer Page --> 
-   <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Customer Management</a>
-         <div class="dropdown-menu">
-      <a class="dropdown-item" href="#" onClick="loadCreateCustomerPage()">Add New Customer</a>
-      <a class="dropdown-item" href="#" onclick="loadSearchCustomerPage()">Search Customer</a>
-       <a class="dropdown-item" href="#" onclick="loadAllCustomerPage()">Show All Customer</a>
-    </div>
-      </li>
-    <!-- Add new Customer Ends.. -->  
-    
-    <!-- Order Management Links -->
-    <li class="nav-item dropdown">
-   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Order Management</a>
-   <div class="dropdown-menu">
-   <a class="dropdown-item" href="#" onClick="loadOrderManagementpage()">Manage Order</a>
-   <a class="dropdown-item" href="#" onClick="loadOrderHistory()">Order History</a>
-   <!-- <a class="dropdown-item" href="#" onClick="loadManagePayment()">Manage Payment</a> -->
-   </div>
-   </li>
-      <!-- Order Management Links -->
-      
-       <!-- Payment Management Links -->
-    <li class="nav-item dropdown">
-   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Payment Management</a>
-   <div class="dropdown-menu">
-   <a class="dropdown-item" href="#" onClick="loadManagePayment()">Manage Payment</a>
-    <a class="dropdown-item" href="#" onClick="loadPaymentHistory()">Payment History</a>
-  
-   </div>
-   </li>
-      <!-- Payment Links -->
-          
-      
-       <!-- Defaulter Management Links -->
-    <li class="nav-item dropdown">
-   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Defaulters</a>
-   <div class="dropdown-menu">
-   <a class="dropdown-item" href="#" onClick="loadJarDefaulterPage()">Jar Defaulters</a>
-   <a class="dropdown-item" href="#" onClick="()">Payment Defaulters</a>
-   </div>
-   </li>
-      <!-- Defaulters Links -->
-      
-       
-    </ul>
-  </div>  
-</nav>
-
-<div class="mainContainerClass" style="margin-top:15px">
- <div id="mainContainer">
- </div>
-</div>
-
-</body>
-</html>
+		<div id="mainContainer"></div>
+	</div>
+	</div>

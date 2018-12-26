@@ -151,3 +151,42 @@ function createOrder(){
 	});
 }
 
+// Order History Details:
+
+function getOrderHistory(){
+    $(".overlay").show();
+	var customerId=$("#customerIdHidden").val();
+	var startDate=$("#startDate").val();
+	var endDate=$("#endDate").val();
+	
+	var jsonData='{"customerId":"'+customerId+'","startDate":"'+startDate+'","endDate":"'+endDate+'"}'
+	console.log(jsonData);
+
+	$.ajax({		
+		 type: 'POST',
+	     url : serviceHost+'/order/orderHistory',
+	     data : jsonData,
+	     contentType: 'application/json',
+	     crossdomain: true,
+	     beforeSend : function(){},
+	     complete: function() {
+	     },
+	     success: function(resp, status) {console.log("Success");
+	     console.log(resp);
+	     
+	     setTimeout(function(){
+	    	 
+		     
+		     
+		     $(".overlay").hide();
+	     },1000);
+	     
+	     
+	     
+	     },
+	     error: function(resp, status) {console.log("Error");
+	     $(".overlay").hide();}
+	    
+		
+	});
+}
