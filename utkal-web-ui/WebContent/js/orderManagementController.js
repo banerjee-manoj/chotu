@@ -4,7 +4,12 @@ function getCustomerOrderDetails(){
 	
 	var customerId=$("#customerIdHidden").val();
 		var date=$("#orderDate").val();
-		
+		console.log(date);
+if(date=="")
+	{
+	alert("Please Select Date");
+	return;
+	}
 	
 	$.ajax({
 		
@@ -161,7 +166,9 @@ function getOrderHistory(){
 	
 	var jsonData='{"customerId":"'+customerId+'","startDate":"'+startDate+'","endDate":"'+endDate+'"}'
 	console.log(jsonData);
-
+	 
+		$("#orderHistoryTable").DataTable().destroy();
+		$("#orderHistoryTable tbody tr").remove();
 	$.ajax({		
 		 type: 'POST',
 	     url : serviceHost+'/order/orderHistory',
@@ -173,6 +180,39 @@ function getOrderHistory(){
 	     },
 	     success: function(resp, status) {console.log("Success");
 	     console.log(resp);
+	    
+		  var trHtml = ''; 
+	      $.each(resp.customerOrderList,function(i,item){
+	    trHtml += "<tr><td>"+item.customerName+"</td>" +
+	              "<td>"+item.orderDate+"</td>"+
+	              "<td>"+item.normalJarOrdered+"</td>"+
+	              "<td>"+item.normalEmptyJarReturned+"</td>"+
+	              "<td>"+item.normalFilledJarReturned+"</td>"+
+	              "<td>"+item.coldJarOrdered+"</td>"+
+	              "<td>"+item.coldEmptyJarReturned+"</td>"+
+	              "<td>"+item.coldFilledJarReturned+"</td>"+
+	              "<td>"+item.containerOrdered+"</td>"+
+	              "<td>"+item.containerReturned+"</td>"+
+	              "<td>"+item.totalBill+"</td>"+
+	              "<td>"+item.payment+"</td>"+
+	    
+	    "</tr>";
+	    });
+	      $('#orderHistoryTable').append(trHtml);
+	      $('#orderHistoryTable').DataTable();
+	      
+	$('#customerDataDiv').show();
+	 $('#normalJarOrdered').text(resp.totalNormalJarOrdered);
+	 $('#normalEmptyJarReturned').text(resp.totalNormalEmptyJarReturned);
+	 $('#normalFilledJarReturned').text(resp.totalNormalFilledJarReturned);
+	 $('#coldJarOrdered').text(resp.totalColdJarOrdered);
+	 $('#coldEmptyJarReturned').text(resp.totalColdEmptyJarReturned);
+	 $('#coldFilledJarReturned').text(resp.totalColdFilledJarReturned);
+	 $('#totalBill').text(resp.totalBill);
+	 $('#paymentRcvd').text(resp.totalPaymentRcvd);
+	     
+	     
+	     
 	     
 	     setTimeout(function(){
 	    	 

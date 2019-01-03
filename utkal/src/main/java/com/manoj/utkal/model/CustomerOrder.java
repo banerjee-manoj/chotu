@@ -6,6 +6,7 @@ import lombok.Data;
 public class CustomerOrder extends Customer{
 	
 	private int orderId;
+	private String customerName;
 	private String orderDate;
 	private String normalJarOrdered;
 	private String coldJarOrdered;

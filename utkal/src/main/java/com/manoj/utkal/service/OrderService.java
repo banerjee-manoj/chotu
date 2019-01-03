@@ -1,8 +1,7 @@
 package com.manoj.utkal.service;
 
-import java.util.List;
-
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.OrderHistory;
 import com.manoj.utkal.model.SearchCriteria;
 
 public interface OrderService {
@@ -16,5 +15,5 @@ public interface OrderService {
 	
 	public CustomerOrder createPayment(CustomerOrder customerOrder);
 	
-	public List<CustomerOrder> getOrderHistory(SearchCriteria criteria);
+	public OrderHistory getOrderHistory(SearchCriteria criteria);
 }

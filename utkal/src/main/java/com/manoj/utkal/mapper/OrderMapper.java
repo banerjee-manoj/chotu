@@ -13,6 +13,7 @@ public class OrderMapper implements RowMapper<CustomerOrder> {
 	public CustomerOrder mapRow(ResultSet rs, int arg1) throws SQLException {
 		CustomerOrder order = new CustomerOrder();
 		order.setOrderId(rs.getInt("order_id"));
+		order.setCustomerName(rs.getString("customer_name"));
 		order.setOrderDate(rs.getString("transaction_date"));
 		
 		order.setNormalJarOrdered(rs.getString("n_jar_taken"));

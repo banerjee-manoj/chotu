@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.manoj.utkal.dao.OrderDao;
 import com.manoj.utkal.model.Customer;
 import com.manoj.utkal.model.CustomerOrder;
+import com.manoj.utkal.model.OrderHistory;
 import com.manoj.utkal.model.SearchCriteria;
 
 import lombok.extern.slf4j.Slf4j;
@@ -73,9 +74,39 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<CustomerOrder> getOrderHistory(SearchCriteria criteria) {
+	public OrderHistory getOrderHistory(SearchCriteria criteria) {
+		OrderHistory orderHistory = new OrderHistory();
+		List<CustomerOrder> customerOrderList = orderDao.getOrderHistory(criteria); 
+		int totalBbill = 0;
+		int totalPayment = 0;
+		int totalNormalJarOrdered=0;
+		int totalColdJarOrdered=0;
+		int totalNormalJarReturned=0;
+		int totalColdJarReturned=0;
+		int totalNormalFilledJarReturned=0;
+		int totalColdFilledJarReturned=0;
+		for(CustomerOrder order: customerOrderList){
+		totalBbill=totalBbill+Integer.parseInt(order.getTotalBill());
+		totalPayment=totalPayment+Integer.parseInt(order.getPayment());
+		totalNormalJarOrdered=totalNormalJarOrdered+Integer.parseInt(order.getNormalJarOrdered());
+		totalNormalJarReturned=totalNormalJarReturned+Integer.parseInt(order.getNormalEmptyJarReturned());
+		totalNormalFilledJarReturned=totalNormalFilledJarReturned+Integer.parseInt(order.getNormalFilledJarReturned());
+		totalColdJarOrdered=totalColdJarOrdered+Integer.parseInt(order.getColdJarOrdered());
+		totalColdFilledJarReturned=totalColdFilledJarReturned+Integer.parseInt(order.getColdFilledJarReturned());
+		totalColdJarReturned=totalColdJarReturned+Integer.parseInt(order.getColdEmptyJarReturned());
+	}
 		
-		return orderDao.getOrderHistory(criteria);
+		orderHistory.setTotalBill(totalBbill);
+		orderHistory.setTotalPaymentRcvd(totalPayment);
+	    orderHistory.setTotalNormalJarOrdered(totalNormalJarOrdered);
+	    orderHistory.setTotalColdJarOrdered(totalColdJarOrdered);
+	    orderHistory.setTotalNormalEmptyJarReturned(totalNormalJarReturned);
+	    orderHistory.setTotalNormalFilledJarReturned(totalNormalFilledJarReturned);
+	    orderHistory.setTotalColdEmptyJarReturned(totalColdJarReturned);
+	    orderHistory.setTotalColdFilledJarReturned(totalColdFilledJarReturned);		
+		orderHistory.setCustomerOrderList(customerOrderList);
+		
+		return orderHistory;
 	}
 
 }

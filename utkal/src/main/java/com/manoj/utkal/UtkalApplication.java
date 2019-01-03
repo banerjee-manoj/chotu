@@ -11,12 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @PropertySource("classpath:query.properties")
 @Slf4j
-public class UtkalApplication /*extends SpringBootServletInitializer*/ {
+public class UtkalApplication extends SpringBootServletInitializer {
 
-	/* @Override
+	 @Override
 	    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 	        return application.sources(UtkalApplication.class);
-	    }*/
+	    }
 	
 	
 	public static void main(String[] args) {
