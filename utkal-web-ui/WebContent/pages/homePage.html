@@ -1,29 +1,7 @@
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-<script src="js/global.js"></script>
-<script src="js/menuController.js"></script>
-<script src="js/customerController.js"></script>
-<script src="js/autoComplete.js"></script>
-<script src="js/orderManagementController.js"></script>
-<script src="js/paymentController.js"></script>
-<script src="js/defaulterController.js"></script>
-<link rel="stylesheet" href="css/app.css">
 
 
-<div class="overlay"><div id="loading-img"></div></div>
+
+
 
 <div class="jumbotron text-center"
 		style="margin-bottom: 0; padding: 1rem 1rem">
@@ -31,7 +9,7 @@
 
 	</div>
 
-	
+<strong><span id="welcomebar"></span> &nbsp; <span id="date"></span> &nbsp; <span id="time"></span></strong>	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<a class="navbar-brand" href="#">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -85,13 +63,21 @@
 					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Defaulters</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#" onClick="loadJarDefaulterPage()">Jar
-							Defaulters</a> <a class="dropdown-item" href="#" onClick="()">Payment
+							Defaulters</a> <a class="dropdown-item" href="#" onClick="loadPaymentDefaulterPage()">Payment
 							Defaulters</a>
 					</div></li>
 				<!-- Defaulters Links -->
-
+<!-- User Management Links -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">User</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#" onClick="loadCreateUserPage()">Create User</a>
+						<a class="dropdown-item" href="#" onClick="loadJarDefaulterPage()">Delete User</a> 
+					</div></li>
+				<!-- User Links -->
 
 			</ul>
+			
 		</div>
 	</nav>
 	

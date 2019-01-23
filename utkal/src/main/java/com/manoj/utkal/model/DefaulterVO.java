@@ -18,5 +18,10 @@ public class DefaulterVO {
 	private int normalJarPending;
 	private int coldJarPending;
 	
+	
+	private String totalPayment;
+	private String totalBill;
+	private String paymentDue;
+	
 
 }

@@ -9,6 +9,7 @@ import com.manoj.utkal.dao.OrderDao;
 import com.manoj.utkal.model.Customer;
 import com.manoj.utkal.model.CustomerOrder;
 import com.manoj.utkal.model.OrderHistory;
+import com.manoj.utkal.model.PaymentHistory;
 import com.manoj.utkal.model.SearchCriteria;
 
 import lombok.extern.slf4j.Slf4j;
@@ -109,4 +110,24 @@ public class OrderServiceImpl implements OrderService{
 		return orderHistory;
 	}
 
+	@Override
+	public PaymentHistory getPaymentHistory(SearchCriteria criteria) {
+		PaymentHistory paymentHistory = new PaymentHistory();
+		List<CustomerOrder> customerPaymentHistory = orderDao.getPaymentHistory(criteria); 
+		int totalPaymentReceived = 0;
+		
+		for(CustomerOrder payment: customerPaymentHistory){
+			totalPaymentReceived=totalPaymentReceived+Integer.parseInt(payment.getPayment());
+		}
+		
+		paymentHistory.setTotalPaymentReceived(totalPaymentReceived);
+		paymentHistory.setCustomerPaymentDetails(customerPaymentHistory);
+		return paymentHistory;
+	}
+
+	
+	
+	
+	
+	
 }

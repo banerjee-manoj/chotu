@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.manoj.utkal.mapper.DefaulterVOMapper;
+import com.manoj.utkal.mapper.PaymentDefaulterMapper;
 import com.manoj.utkal.model.DefaulterVO;
 import com.manoj.utkal.model.SearchCriteria;
 
@@ -50,4 +51,31 @@ public class DefaulterDaoImpl implements DefaulterDao {
 		return defaulterList;
 	}
 
+	
+	@Override
+	public List<DefaulterVO> getPaymentDefaulter(SearchCriteria criteria) {
+		String baseQuery = environment.getProperty("");
+		StringBuilder strBuilder = new StringBuilder();
+		strBuilder.append(baseQuery);
+		if(!(criteria.getCustomerId()==0)) {
+              strBuilder.append(" and customer.Id="+criteria.getCustomerId());
+		}else {
+			if(!criteria.getCustomerType().isEmpty()) {
+				strBuilder.append(" and customer.type='"+criteria.getCustomerType()+"'");
+			}}
+		
+		
+		if(!criteria.getStartDate().isEmpty() && !criteria.getEndDate().isEmpty()) {
+			strBuilder.append(" and orderTable.transaction_date>='"+criteria.getStartDate()+"' "
+					+ "and orderTable.transaction_date<='"+criteria.getEndDate()+"'");
+		}
+		strBuilder.append(" group by customerId");
+		log.info("Jar defaulter Query : {}",strBuilder.toString());
+		
+		List<DefaulterVO> defaulterList = jdbcTemplate.query(strBuilder.toString(),new PaymentDefaulterMapper());
+		return defaulterList;
+	}
+
+	
+	
 }

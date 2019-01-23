@@ -67,7 +67,7 @@ function getJarDefaulters() {
 		      //alert("Done");
 		      
 	    		
-	    	 
+	    	 $('#searchResult').show();
 	   },
 	     error: function(resp, status) {
 	    	 $("#mainContainer").load("./pages/errorPage.html");

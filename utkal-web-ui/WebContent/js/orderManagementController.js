@@ -214,12 +214,13 @@ function getOrderHistory(){
 	     
 	     
 	     
-	     setTimeout(function(){
+	     
 	    	 
 		     
 		     
 		     $(".overlay").hide();
-	     },1000);
+		     $('#orderHistoryTable').show();
+	     
 	     
 	     
 	     

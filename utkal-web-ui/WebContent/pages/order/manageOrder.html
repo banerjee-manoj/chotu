@@ -1,3 +1,13 @@
+<script>
+$(document).ready(function () {
+    $('#orderDate').datepicker({
+      format :"yyyy-mm-dd",
+      uiLibrary: 'bootstrap',
+	  setDate: new Date(),
+      autoclose: 'true'
+    });
+});
+</script>
 <style>
 button {
   display: inline-block;
@@ -14,12 +24,12 @@ button {
 <label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
 <div class="control">
 <input type="text" id="customerNameSearch" class="form-control form-control-sm" 
-  name="myCountry" placeholder="Select Customer">
+  name="myCountry" placeholder="Select Customer" autocomplete="off">
   <input type="hidden" id="customerIdHidden" value=0 >
 </div>
 <label class="control-label input-label" style="font-size: 16px"><strong>Select Order Date:</strong></label>
 <div class="control">
-<input type="date" id="orderDate" class="form-control form-control-sm" 
+<input  placeholder="Select Order Date" id="orderDate" class="form-control form-control-sm" 
   name="orderDate" >
 </div>
 

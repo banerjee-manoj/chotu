@@ -66,6 +66,26 @@ function loadManagePayment(){
 	
 }
 
+function loadPaymentHistory(){
+	
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
+	$(".overlay").show();
+	
+	$("#mainContainer").load("./pages/payment/paymentHistory.html");
+	setTimeout(() => {
+		getAllCustomerNames();	
+	}, 200);
+	
+	setTimeout(() => {
+		$(".overlay").hide();
+	}, 500);
+	
+}
+
+
+
+
 function loadJarDefaulterPage(){
 	$("#errorMessage").text("");
 	$('#mainContainer').show();
@@ -83,9 +103,36 @@ $("#mainContainer").load("./pages/defaulters/jarDefaulters.html");
 	
 }
 
+function loadPaymentDefaulterPage(){
+	
+	$("#errorMessage").text("");
+	$('#mainContainer').show();
+$(".overlay").show();
+	
+$("#mainContainer").load("./pages/defaulters/paymentDefaulter.html");
+	setTimeout(() => {
+		getAllCustomerNames();	
+	}, 200);
+	
+	setTimeout(() => {
+		$(".overlay").hide();
+	}, 500);
+	
+}
+
+
+
+
+
 function loadOrderHistory(){
 	$("#errorMessage").text("");
 	$('#mainContainer').show();
 	getAllCustomerNames();
 	$("#mainContainer").load("./pages/order/orderHistory.html");
+}
+
+
+function loadCreateUserPage(){
+	$("#mainContainer").load("./pages/user/createUser.html");
+	
 }

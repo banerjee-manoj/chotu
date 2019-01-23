@@ -8,5 +8,5 @@ import com.manoj.utkal.model.SearchCriteria;
 public interface DefaulterService {
 	
 	public List<DefaulterVO> getJarDefaulter(SearchCriteria criteria);
-
+	public List<DefaulterVO> getPaymentDefaulter(SearchCriteria criteria);
 }

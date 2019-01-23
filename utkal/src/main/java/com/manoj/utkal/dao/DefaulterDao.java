@@ -9,4 +9,5 @@ public interface DefaulterDao {
 
 	
 	public List<DefaulterVO> getJarDefaulter(SearchCriteria criteria);
+	public List<DefaulterVO> getPaymentDefaulter(SearchCriteria criteria);
 }

@@ -17,4 +17,5 @@ public interface OrderDao {
     public CustomerOrder updatePayment(CustomerOrder order);
     
     public List<CustomerOrder> getOrderHistory(SearchCriteria criteria);
+    public List<CustomerOrder> getPaymentHistory(SearchCriteria criteria);
 }

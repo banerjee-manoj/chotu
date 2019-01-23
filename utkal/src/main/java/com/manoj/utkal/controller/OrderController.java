@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.manoj.utkal.model.CustomerOrder;
 import com.manoj.utkal.model.OrderHistory;
+import com.manoj.utkal.model.PaymentHistory;
 import com.manoj.utkal.model.SearchCriteria;
 import com.manoj.utkal.service.OrderService;
 
@@ -59,12 +60,16 @@ public class OrderController {
 	}
 
 	@PostMapping("/orderHistory")
-	public ResponseEntity<OrderHistory> getorderHistory(@RequestBody SearchCriteria criteria){
+	public ResponseEntity<OrderHistory> getOrderHistory(@RequestBody SearchCriteria criteria){
 		log.debug("getOrderHistory");
 		return new ResponseEntity<OrderHistory>(orderService.getOrderHistory(criteria),HttpStatus.OK);
 	}
 	
-	
+	@PostMapping("/paymentHistory")
+	public ResponseEntity<PaymentHistory> getPaymentHistory(@RequestBody SearchCriteria criteria){
+		log.debug("getPaymentHistory");
+		return new ResponseEntity<PaymentHistory>(orderService.getPaymentHistory(criteria),HttpStatus.OK);
+	}
 	
 	
 }

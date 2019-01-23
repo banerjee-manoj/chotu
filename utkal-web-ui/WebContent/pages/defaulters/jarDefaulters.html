@@ -1,3 +1,18 @@
+<script>
+$(document).ready(function () {
+    $('#startDate').datepicker({
+      format :"yyyy-mm-dd",
+    	  uiLibrary: 'bootstrap',
+    	  setDate: new Date(),
+          autoclose: 'true'
+    });
+    $('#endDate').datepicker({
+        format :"yyyy-mm-dd",
+      	  uiLibrary: 'bootstrap'
+      });
+});
+</script>
+
 <div style="text-align: center"><h4>Jar Defaulters</h4></div>
 <hr>
 
@@ -7,25 +22,26 @@
 <label class="control-label input-label" style="font-size: 16px"><strong>Select Customer:</strong></label>
 <div class="control">
 <input type="text" id="customerNameSearch" class="form-control form-control-sm" 
-  name="myCountry" placeholder="Select Customer">
+  name="myCountry" placeholder="Select Customer" autocomplete="off">
   <input type="hidden" id="customerIdHidden" value=0 >
 </div>
 <label class="control-label input-label" style="font-size: 16px"><strong>Start Date:</strong></label>
 <div class="control">
-<input type="date" id="startDate" class="form-control form-control-sm" 
+
+<input placeholder="Select Start Date" id="startDate" class="form-control form-control-sm appDate" 
   name="startDate" >
 </div>
 
 <label class="control-label input-label" style="font-size: 16px"><strong>End Date:</strong></label>
 <div class="control">
-<input type="date" id="endDate" class="form-control form-control-sm" 
+<input placeholder="Select End Date" id="endDate" class="form-control form-control-sm appDate" 
   name="endDate" >
 </div>
 <label class="control-label input-label" style="font-size: 16px"><strong>Customer Type:</strong></label>
 <div class="control">
 <div >
 <select class="form-control form-control-sm" id="customerType" name="customerType">
-        <option value="">--Select--</option>
+        <option value="">--Select Customer Type--</option>
 		<option value="Regular">Regular</option>
         <option value="Catering">Catering</option>
         <option value="Adhoc">Adhoc</option>
@@ -35,7 +51,7 @@
 
 
 
-<button class=" btn btn-primary btn-sm" onclick="getJarDefaulters()" style="margin-top: 8px">Get Details</button>
+<button class=" btn btn-primary btn-sm" onclick="getJarDefaulters()" style="margin-top: 8px">Get Jar Defaulters</button>
 <button type="reset" class=" btn  btn-sm" style="margin-top: 8px">Reset</button>
 </div>
 <hr>
@@ -48,7 +64,7 @@
 
 <div class="col-sm-9">
 
-<div id="searchResult">
+<div id="searchResult" style="display: none">
 <table id="defaulterSearchResult"  class="table table-striped table-bordered dt-responsive" >
 <thead><tr>
 <th>Customer Name</th>

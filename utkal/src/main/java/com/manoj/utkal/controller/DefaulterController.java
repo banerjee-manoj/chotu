@@ -33,5 +33,13 @@ public class DefaulterController {
 		return new ResponseEntity<List<DefaulterVO>>(defaulterService.getJarDefaulter(criteria),HttpStatus.OK);
 		
 	}
+	
+	@PostMapping("/payment")
+	public ResponseEntity<List<DefaulterVO>> getPaymentDefaulterList(@RequestBody 
+			SearchCriteria criteria) {
+		log.info("Search Criteira --> {}",criteria);
+		return new ResponseEntity<List<DefaulterVO>>(defaulterService.getPaymentDefaulter(criteria),HttpStatus.OK);
+		
+	}
 
 }

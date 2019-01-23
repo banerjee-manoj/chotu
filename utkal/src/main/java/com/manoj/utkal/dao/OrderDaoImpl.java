@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.manoj.utkal.mapper.OrderMapper;
+import com.manoj.utkal.mapper.PaymentMapper;
 import com.manoj.utkal.model.CustomerOrder;
 import com.manoj.utkal.model.SearchCriteria;
 
@@ -175,6 +176,29 @@ public class OrderDaoImpl implements OrderDao {
 		
 		return customerOrderHistory;
 	} 
+
+	
+	@Override
+	public List<CustomerOrder> getPaymentHistory(SearchCriteria criteria){
+		log.debug("Begin getPaymentHistory");
+		List<CustomerOrder> customerPaymentHistory = new ArrayList<CustomerOrder>();
+		StringBuffer query = new StringBuffer();
+		query.append(env.getProperty("getPaymentHistory"));
+		if(!StringUtils.isEmpty(criteria.getCustomerId()) && criteria.getCustomerId()!=0){
+		query.append(" and customer.Id="+criteria.getCustomerId());
+		}
+		if(!StringUtils.isEmpty(criteria.getStartDate()) && !StringUtils.isEmpty(criteria.getEndDate())){
+			query.append(" and payment.transaction_date>='"+criteria.getStartDate()+"' "
+					+ "and payment.transaction_date<='"+criteria.getEndDate()+"'");
+		}
+		
+		log.debug("Query to search Payment history: {}",query.toString());
+		customerPaymentHistory = jdbcTemplate.query(query.toString(),new PaymentMapper());
+		
+		
+		return customerPaymentHistory;
+	} 
+
 	
 
 }

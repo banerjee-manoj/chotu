@@ -23,5 +23,11 @@ public class DefaulterServiceImpl implements DefaulterService {
 		
 		return defaulterDao.getJarDefaulter(criteria);
 	}
+	
+	@Override
+	public List<DefaulterVO> getPaymentDefaulter(SearchCriteria criteria) {
+		
+		return defaulterDao.getJarDefaulter(criteria);
+	}
 
 }
